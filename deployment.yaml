@@ -18,7 +18,7 @@ spec:
         app: flaskdemo
     spec:
       containers:
-      - image: raj80dockerid/test:6
+      - image: andylee1973/python:lastest
         name: flaskdemo
         resources: {}
 status: {}
@@ -26,13 +26,14 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  name: lb-service
+  name: flaskdemo
   labels:
-    app: lb-service
+    app: flaskdemo
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
-  - port: 80
+  - port: 5000
     targetPort: 5000
+    nodePort: 32500
   selector:
     app: flaskdemo
